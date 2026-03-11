@@ -1,0 +1,80 @@
+🚀 Installation
+1. Install dependencies
+npm install
+
+
+Faster than the time it takes to decide whether you should run the testnet or not.
+
+2. Add accounts
+
+Open the file accounts.txt, one private key per line:
+
+0xabc123...your_private_key_1
+0xdef456...your_private_key_2
+
+3. (Optional) Add proxies
+
+Open the file proxy.txt, one proxy per line:
+
+host:port
+host:port:username:password
+http://username:password@host:port
+socks5://username:password@host:port
+
+4. Run the bot
+npm start
+
+⚙️ Configuration
+
+All configuration settings are stored in config.json.
+This file will be automatically generated on the first run.
+
+{
+  // Number of parallel processing threads
+  "threads": 10,
+
+  // Random delay between actions (ms) — simulates human behavior
+  "delay": {
+    "min": 3000,
+    "max": 7000
+  },
+
+  // Enable/disable individual features
+  "features": {
+    "claimShelbyUSD": true,    // Claim ShelbyUSD test tokens
+    "claimAPT": true,          // Claim APT test tokens
+    "uploadFiles": true,       // Upload files to storage
+    "autoGenerateFiles": true  // Automatically generate random files
+  },
+
+  // Upload configuration
+  "upload": {
+    "totalFiles": 30,          // Total files to upload per wallet
+    "daysSpread": 5,           // Spread uploads across N days
+    "filesPerSession": 6,      // Files uploaded per session
+    "expirationDays": 30,      // Blob storage duration
+    "maxFileSizeKB": 500,      // Maximum file size (KB)
+    "minFileSizeKB": 1,        // Minimum file size (KB)
+    "fileTypes": ["png", "jpg", "pdf", "txt", "json", "csv"]
+  },
+
+  "proxy": {
+    "enabled": false,
+    "rotatePerAccount": true   // Rotate proxy per account
+  },
+
+  // Faucet configuration
+  "faucet": {
+    "aptAmount": 100000000,    // 1 APT (8 decimals)
+    "shelbyUsdAmount": 1000000000,
+    "retryAttempts": 3,
+    "retryDelay": 5000
+  },
+
+  // Automation cycle
+  "cycle": {
+    "enabled": true,           // Enable automatic looping
+    "intervalHours": 24,       // Wait time between cycles
+    "maxCycles": 0             // 0 = unlimited (runs indefinitely)
+  }
+}
